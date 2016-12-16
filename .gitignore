@@ -38,3 +38,14 @@ lib*.pc
 /Debug/
 /Release/
 /tmp_install/
+.cproject
+.idea/
+.project
+.settings/
+CMakeLists.txt
+build.sh
+cmake-build-debug/
+cscope.files
+cscope.out
+finished_ModifyTable.diff
+logfile
