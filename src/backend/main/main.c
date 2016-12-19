@@ -172,7 +172,11 @@ main(int argc, char *argv[])
 			puts("postgres (PostgreSQL) " PG_VERSION);
 			exit(0);
 		}
-
+		if (strcmp(argv[1], "--gp-version") == 0)
+		{
+			puts("postgres (Greenplum Database) " GP_VERSION);
+			exit(0);
+		}
 		/*
 		 * In addition to the above, we allow "--describe-config" and "-C var"
 		 * to be called by root.  This is reasonably safe since these are

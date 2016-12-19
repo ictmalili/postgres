@@ -1,0 +1,10 @@
+#!/bin/bash
+
+GP_VERSION=4.3.99.00
+
+GP_BUILDNUMBER=dev
+if [ -f BUILD_NUMBER ] ; then
+    GP_BUILDNUMBER=`cat BUILD_NUMBER`
+fi
+
+echo "${GP_VERSION} build ${GP_BUILDNUMBER}"
