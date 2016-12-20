@@ -93,8 +93,8 @@ install: generate_greenplum_path_file
 
 	cp -rp sbin/* $(DESTDIR)$(prefix)/sbin/.
 	#cp -p extensions/gpfdist/gpfdist$(EXE_EXT) $(DESTDIR)$(prefix)/bin/
-	cp $(top_builddir)/src/test/regress/*.pl $(DESTDIR)$(prefix)/bin
-	cp $(top_builddir)/src/test/regress/*.pm $(DESTDIR)$(prefix)/bin
+#	cp $(top_builddir)/src/test/regress/*.pl $(DESTDIR)$(prefix)/bin
+#	cp $(top_builddir)/src/test/regress/*.pm $(DESTDIR)$(prefix)/bin
 	if [ ! -d ${DESTDIR}${prefix}/docs ] ; then mkdir ${DESTDIR}${prefix}/docs ; fi
 	if [ -d doc ]; then cp -rp doc $(DESTDIR)$(prefix)/docs/cli_help; fi
 	@if [ -d demo/gpmapreduce ]; then \
@@ -108,7 +108,7 @@ install: generate_greenplum_path_file
 #	  $(TAR) -C demo -czf $(prefix)/demo/gpfdist_transform.tar.gz gpfdist_transform; \
 #	fi
 
-	$(MAKE) set_scripts_version prefix=$(prefix)
+#	$(MAKE) set_scripts_version prefix=$(prefix)
 	# Remove unwanted files.
 	rm -rf $(DESTDIR)$(prefix)/bin/ext
 	rm -rf $(DESTDIR)$(prefix)/bin/pythonSrc

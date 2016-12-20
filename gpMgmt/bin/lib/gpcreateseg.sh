@@ -52,7 +52,7 @@ EXIT_STATUS=0
 PORT_TXT="#port"
 LOG_STATEMENT_TXT="#log_statement ="
 LISTEN_ADR_TXT="listen_addresses"
-CHKPOINT_SEG_TXT="checkpoint_segments"
+#CHKPOINT_SEG_TXT="checkpoint_segments"
 TMP_PG_HBA=/tmp/pg_hba_conf_master.$$
 
 #******************************************************************************
@@ -161,8 +161,8 @@ PROCESS_QE () {
     PARA_EXIT $RETVAL "Update port number to $GP_PORT"
     SED_PG_CONF ${GP_DIR}/$PG_CONF "$LISTEN_ADR_TXT" listen_addresses=\'*\' 0 $GP_HOSTADDRESS
     PARA_EXIT $RETVAL "Update listen address"
-    SED_PG_CONF ${GP_DIR}/$PG_CONF "$CHKPOINT_SEG_TXT" checkpoint_segments=$CHECK_POINT_SEGMENTS 0 $GP_HOSTADDRESS
-    PARA_EXIT $RETVAL "Update checkpoint segments"
+#    SED_PG_CONF ${GP_DIR}/$PG_CONF "$CHKPOINT_SEG_TXT" checkpoint_segments=$CHECK_POINT_SEGMENTS 0 $GP_HOSTADDRESS
+#    PARA_EXIT $RETVAL "Update checkpoint segments"
 
     if [ x"" != x"$PG_CONF_ADD_FILE" ]; then
 	LOG_MSG "[INFO][$INST_COUNT]:-Processing additional configuration parameters"
