@@ -26,20 +26,22 @@
 
 CATALOG(gp_segment_configuration,5036) BKI_SHARED_RELATION BKI_WITHOUT_OIDS
 {
-int16		dbid;				/* up to 32767 segment databases */
-int16		content;			/* up to 32767 contents -- only 16384 usable with mirroring (see dbid) */
+	int16		dbid;				/* up to 32767 segment databases */
+	int16		content;			/* up to 32767 contents -- only 16384 usable with mirroring (see dbid) */
 
-char		role;
-char		preferred_role;
-char		mode;
-char		status;
-int32		port;
+	char		role;
+	char		preferred_role;
+	char		mode;
+	char		status;
+	int32		port;
 
-text		hostname;
-text		address;
+	int32		replication_port;
+	int2vector	san_mounts;			/* one or more mount-points used by this segment. */
 
-int32		replication_port;
-int2vector	san_mounts;			/* one or more mount-points used by this segment. */
+#ifdef CATALOG_VARLEN			/* variable-length fields start here */
+	text		hostname;
+	text		address;
+#endif
 } FormData_gp_segment_configuration;
 
 /* no foreign keys */
@@ -64,10 +66,10 @@ typedef FormData_gp_segment_configuration *Form_gp_segment_configuration;
 #define Anum_gp_segment_configuration_mode				5
 #define Anum_gp_segment_configuration_status			6
 #define Anum_gp_segment_configuration_port				7
-#define Anum_gp_segment_configuration_hostname			8
-#define Anum_gp_segment_configuration_address			9
-#define Anum_gp_segment_configuration_replication_port	10
-#define Anum_gp_segment_configuration_san_mounts		11
+#define Anum_gp_segment_configuration_replication_port	8
+#define Anum_gp_segment_configuration_san_mounts		9
+#define Anum_gp_segment_configuration_hostname			10
+#define Anum_gp_segment_configuration_address			11
 
 
 #endif /*_GP_SEGMENT_CONFIG_H_*/
