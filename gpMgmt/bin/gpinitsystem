@@ -1269,8 +1269,8 @@ CREATE_QD_DB () {
 		LOG_MSG "[INFO]:-Starting the Master in admin mode" 1
 		LOG_MSG "[INFO]:- YYDZERO: $GP_DIR" 1
 		mkdir -p $GP_DIR/pg_log
-		export PGPORT=$GP_PORT;$PG_CTL -w -l $GP_DIR/pg_log/startup.log -D $GP_DIR -o "-i -p $GP_PORT -c gp_role=utility -M master --gp_dbid=1 --gp_contentid=-1 \
-		--gp_num_contents_in_cluster=0 -m" start >> $GP_DIR/pg_log/startup.log 2>&1
+		export PGPORT=$GP_PORT;$PG_CTL -w -l $GP_DIR/pg_log/startup.log -D $GP_DIR -o "-i -p $GP_PORT --gp_role=utility --gp_dbid=1 --gp_contentid=-1 \
+		--gp_num_contents_in_cluster=0" start >> $GP_DIR/pg_log/startup.log 2>&1
 		RET_TEXT="`$PG_CTL status -D $GP_DIR`"
 		RUNNING=`$ECHO $RET_TEXT|$EGREP -c "not running|neither"`
 		if [ $RUNNING -ne 0 ]; then

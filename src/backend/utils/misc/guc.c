@@ -4121,6 +4121,14 @@ build_guc_variables(void)
 		num_vars++;
 	}
 
+	for (i = 0; ConfigureNamesInt_gp[i].gen.name; i++)
+	{
+		struct config_int *conf = &ConfigureNamesInt_gp[i];
+
+		conf->gen.vartype = PGC_INT;
+		num_vars++;
+	}
+
 	for (i = 0; ConfigureNamesReal[i].gen.name; i++)
 	{
 		struct config_real *conf = &ConfigureNamesReal[i];
@@ -4132,6 +4140,14 @@ build_guc_variables(void)
 	for (i = 0; ConfigureNamesString[i].gen.name; i++)
 	{
 		struct config_string *conf = &ConfigureNamesString[i];
+
+		conf->gen.vartype = PGC_STRING;
+		num_vars++;
+	}
+
+	for (i = 0; ConfigureNamesString_gp[i].gen.name; i++)
+	{
+		struct config_string *conf = &ConfigureNamesString_gp[i];
 
 		conf->gen.vartype = PGC_STRING;
 		num_vars++;
@@ -4161,6 +4177,9 @@ build_guc_variables(void)
 	for (i = 0; ConfigureNamesInt[i].gen.name; i++)
 		guc_vars[num_vars++] = &ConfigureNamesInt[i].gen;
 
+	for (i = 0; ConfigureNamesInt_gp[i].gen.name; i++)
+		guc_vars[num_vars++] = &ConfigureNamesInt_gp[i].gen;
+
 	for (i = 0; ConfigureNamesReal[i].gen.name; i++)
 		guc_vars[num_vars++] = &ConfigureNamesReal[i].gen;
 
@@ -4169,6 +4188,9 @@ build_guc_variables(void)
 
 	for (i = 0; ConfigureNamesEnum[i].gen.name; i++)
 		guc_vars[num_vars++] = &ConfigureNamesEnum[i].gen;
+
+	for (i = 0; ConfigureNamesString_gp[i].gen.name; i++)
+		guc_vars[num_vars++] = &ConfigureNamesString_gp[i].gen;
 
 	if (guc_variables)
 		free(guc_variables);

@@ -264,4 +264,10 @@ extern const char *config_enum_lookup_by_value(struct config_enum * record, int 
 extern bool config_enum_lookup_by_name(struct config_enum * record,
 						   const char *value, int *retval);
 
+/* guc_gp.c exports these for guc.c */
+//extern struct config_bool ConfigureNamesBool_gp[];
+extern struct config_int ConfigureNamesInt_gp[];
+//extern struct config_real ConfigureNamesReal_gp[];
+extern struct config_string ConfigureNamesString_gp[];
+
 #endif   /* GUC_TABLES_H */
