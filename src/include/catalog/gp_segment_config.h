@@ -35,7 +35,7 @@ CATALOG(gp_segment_configuration,5036) BKI_SHARED_RELATION BKI_WITHOUT_OIDS
 	char		status;
 	int32		port;
 
-	int32		replication_port;
+	int32		replication_port BKI_FORCE_NULL;
 	int2vector	san_mounts;			/* one or more mount-points used by this segment. */
 
 #ifdef CATALOG_VARLEN			/* variable-length fields start here */
