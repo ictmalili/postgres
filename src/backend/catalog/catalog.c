@@ -31,6 +31,8 @@
 #include "catalog/pg_auth_members.h"
 #include "catalog/pg_authid.h"
 #include "catalog/pg_database.h"
+#include "catalog/pg_filespace.h"
+#include "catalog/pg_filespace_entry.h"
 #include "catalog/pg_namespace.h"
 #include "catalog/pg_pltemplate.h"
 #include "catalog/pg_db_role_setting.h"
@@ -231,7 +233,9 @@ IsSharedRelation(Oid relationId)
 		relationId == DbRoleSettingRelationId ||
 		relationId == ReplicationOriginRelationId ||
 		relationId == GpVersionRelationId ||
-		relationId == GpSegmentConfigRelationId)
+		relationId == GpSegmentConfigRelationId ||
+		relationId == FileSpaceRelationId ||
+		relationId == FileSpaceEntryRelationId)
 		return true;
 	/* These are their indexes (see indexing.h) */
 	if (relationId == AuthIdRolnameIndexId ||

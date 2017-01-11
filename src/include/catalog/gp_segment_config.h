@@ -2,6 +2,8 @@
  *
  * gp_segment_config.h
  *    a segment configuration table
+ *
+ *-------------------------------------------------------------------------
  */
 #ifndef _GP_SEGMENT_CONFIG_H_
 #define _GP_SEGMENT_CONFIG_H_
