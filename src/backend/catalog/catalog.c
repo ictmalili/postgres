@@ -24,8 +24,9 @@
 #include "access/sysattr.h"
 #include "access/transam.h"
 #include "catalog/catalog.h"
-#include "catalog/gp_version.h"
+#include "catalog/gp_san_config.h"
 #include "catalog/gp_segment_config.h"
+#include "catalog/gp_version.h"
 #include "catalog/indexing.h"
 #include "catalog/namespace.h"
 #include "catalog/pg_auth_members.h"
@@ -234,6 +235,7 @@ IsSharedRelation(Oid relationId)
 		relationId == ReplicationOriginRelationId ||
 		relationId == GpVersionRelationId ||
 		relationId == GpSegmentConfigRelationId ||
+		relationId == GpFaultStrategyRelationId ||
 		relationId == FileSpaceRelationId ||
 		relationId == FileSpaceEntryRelationId)
 		return true;
