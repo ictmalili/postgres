@@ -487,7 +487,8 @@ class GpSegStart:
         self.__convertSegments()
         self.checkPostmasters(must_be_running=True)
 
-        self.__checkLocaleAndConnect()
+        # comment out, as we don't have gp_primarymirror utility
+        # self.__checkLocaleAndConnect()
         self.checkPostmasters(must_be_running=True)
 
         # At this point any segments remaining in the mapping are assumed to
