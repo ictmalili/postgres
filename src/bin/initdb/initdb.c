@@ -200,6 +200,7 @@ static const char *backend_options = "--single -F -O -j -c search_path=pg_catalo
 
 static const char *const subdirs[] = {
 	"global",
+	"pg_log",
 	"pg_xlog/archive_status",
 	"pg_clog",
 	"pg_commit_ts",
