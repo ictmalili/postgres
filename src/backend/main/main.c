@@ -32,6 +32,7 @@
 #endif
 
 #include "bootstrap/bootstrap.h"
+#include "catalog/catversion.h"
 #include "common/username.h"
 #include "postmaster/postmaster.h"
 #include "storage/barrier.h"
@@ -175,6 +176,12 @@ main(int argc, char *argv[])
 		if (strcmp(argv[1], "--gp-version") == 0)
 		{
 			puts("postgres (Greenplum Database) " GP_VERSION);
+			exit(0);
+		}
+		if (strcmp(argv[1], "--catalog-version") == 0 )
+		{
+			printf(_("Catalog version number:               %u\n"),
+				   CATALOG_VERSION_NO);
 			exit(0);
 		}
 		/*
