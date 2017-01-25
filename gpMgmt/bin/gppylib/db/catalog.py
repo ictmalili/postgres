@@ -41,18 +41,18 @@ def getDatabaseList(conn):
 def getActiveUserPIDs(conn):
     sql = """
         SELECT 
-            procpid 
+            pid
         FROM 
             pg_stat_activity 
         WHERE 
-            procpid != pg_backend_pid() AND current_query<>'idle'        
+            pid != pg_backend_pid() AND current_query<>'idle'
         """
     rows = basicSQLExec(conn,sql)
     return rows
 
 def getUserPIDs(conn):
     """dont count ourselves"""
-    sql = """SELECT procpid FROM pg_stat_activity WHERE procpid != pg_backend_pid()"""
+    sql = """SELECT pid FROM pg_stat_activity WHERE pid != pg_backend_pid()"""
     return basicSQLExec(conn,sql)
     
     
@@ -60,9 +60,9 @@ def getUserPIDs(conn):
 def cancelBackendPIDs(conn):
     sql = """
         SELECT 
-            pg_cancel_backend(procpid) 
+            pg_cancel_backend(pid)
         FROM 
-            (SELECT procpid FROM pg_stat_activity WHERE procpid != pg_backend_pid()) as s;
+            (SELECT pid FROM pg_stat_activity WHERE pid != pg_backend_pid()) as s;
         """
     rows = basicSQLExec(conn,sql)
 
