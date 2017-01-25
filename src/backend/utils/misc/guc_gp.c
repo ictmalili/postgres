@@ -16,6 +16,7 @@
 #include "postgres.h"
 
 #include "cdb/cdbvars.h"
+#include "postmaster/postmaster.h"
 #include "utils/guc_tables.h"
 
 struct config_string ConfigureNamesString_gp[] =
@@ -82,5 +83,23 @@ struct config_int ConfigureNamesInt_gp[] =
 	/* End-of-list marker */
 	{
 		{NULL, 0, 0, NULL, NULL}, NULL, NULL, NULL, NULL, NULL
+	}
+};
+
+struct config_bool ConfigureNamesBool_gp[] =
+{
+	{
+		{"silent_mode", PGC_POSTMASTER, LOGGING_WHEN,
+				gettext_noop("Runs the server silently."),
+				gettext_noop("If this parameter is set, the server will automatically run in the "
+									 "background and any controlling terminals are dissociated."),
+				GUC_NOT_IN_SAMPLE | GUC_NO_SHOW_ALL
+		},
+		&SilentMode,
+		false, NULL, NULL, NULL
+	},
+	/* End-of-list marker */
+	{
+		{NULL, 0, 0, NULL, NULL}, NULL, false, NULL, NULL, NULL
 	}
 };

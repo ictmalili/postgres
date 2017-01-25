@@ -4113,6 +4113,15 @@ build_guc_variables(void)
 		num_vars++;
 	}
 
+	for (i = 0; ConfigureNamesBool_gp[i].gen.name; i++)
+	{
+		struct config_bool *conf = &ConfigureNamesBool_gp[i];
+
+		/* Rather than requiring vartype to be filled in by hand, do this: */
+		conf->gen.vartype = PGC_BOOL;
+		num_vars++;
+	}
+
 	for (i = 0; ConfigureNamesInt[i].gen.name; i++)
 	{
 		struct config_int *conf = &ConfigureNamesInt[i];
@@ -4173,6 +4182,9 @@ build_guc_variables(void)
 
 	for (i = 0; ConfigureNamesBool[i].gen.name; i++)
 		guc_vars[num_vars++] = &ConfigureNamesBool[i].gen;
+
+	for (i = 0; ConfigureNamesBool_gp[i].gen.name; i++)
+		guc_vars[num_vars++] = &ConfigureNamesBool_gp[i].gen;
 
 	for (i = 0; ConfigureNamesInt[i].gen.name; i++)
 		guc_vars[num_vars++] = &ConfigureNamesInt[i].gen;
