@@ -76,7 +76,7 @@ def setPort():
 ############
 def getConfiguration():
     CMD = """psql -At -q -c "select content, preferred_role='p' as definedprimary, dbid, role = 'p' as isprimary, 't' as valid, hostname, port, fse\
-location as datadir from gp_segment_configuration join pg_filespace_entry on (dbid = fsedbid) where fsefsoid = 3052" 2> /dev/null"""
+location as datadir from gp_segment_configuration join pg_filespace_entry on (dbid = fsedbid) where fsefsoid = 3343" 2> /dev/null"""
     p = os.popen(CMD)
     out = p.readlines()
     rc = p.close()

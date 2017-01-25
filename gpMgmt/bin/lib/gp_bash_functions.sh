@@ -1696,7 +1696,7 @@ STANDBY_CATALOG_UPDATE () {
     MAX_DB_ID=`${EXPORT_LIB_PATH};env PGOPTIONS="-c gp_session_role=utility" $PSQL -p $MASTER_PORT -A -t -d "$QD_DBNAME" -c"select max(dbid)+1 from $CONFIG_TABLE a;"`
 	ERROR_CHK $? "obtain max dbid from gp_configuration" 2
     $EXPORT_LIB_PATH;env PGOPTIONS="-c gp_session_role=utility" $PSQL -p $MASTER_PORT -A -t -d "$QD_DBNAME" -c"insert into gp_segment_configuration (dbid, content, role, preferred_role, mode, status, hostname, address, port) values (${MAX_DB_ID},-1,'m', 'm', 'u', 's', '${MASTER_STANDBY_HOSTNAME}','${MASTER_STANDBY_HOSTNAME}',${MASTER_STANDBY_PORT});"
-    $EXPORT_LIB_PATH;env PGOPTIONS="-c gp_session_role=utility" $PSQL -p $MASTER_PORT -A -t -d "$QD_DBNAME" -c"insert into pg_filespace_entry (fsefsoid, fsedbid, fselocation) values (3052, ${MAX_DB_ID},'${MASTER_STANDBY_DATA_DIRECTORY}');"
+    $EXPORT_LIB_PATH;env PGOPTIONS="-c gp_session_role=utility" $PSQL -p $MASTER_PORT -A -t -d "$QD_DBNAME" -c"insert into pg_filespace_entry (fsefsoid, fsedbid, fselocation) values (3343, ${MAX_DB_ID},'${MASTER_STANDBY_DATA_DIRECTORY}');"
     ERROR_CHK $? "add standby host gp_configuration record" 2
 	LOG_MSG "[INFO]:-End Function $FUNCNAME"
 }

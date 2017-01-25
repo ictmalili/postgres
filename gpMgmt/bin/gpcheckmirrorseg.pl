@@ -273,7 +273,7 @@ my $glob_debug_fmt = "    DEBUG: ";
 my $DEFAULTTABLESPACE_OID = 1663;
 my $GLOBALTABLESPACE_OID  = 1664;
 
-my $DEFAULTFILESPACE_OID  = 3052;
+my $DEFAULTFILESPACE_OID  = 3343;
 
 BEGIN {
 	my $man  = 0;

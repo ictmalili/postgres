@@ -32,7 +32,7 @@ from gppylib.userinput import ask_yesno
 logger = gplog.get_default_logger()
 
 DEFAULT_BATCH_SIZE = 16
-SYSTEM_FSOID = 3052
+SYSTEM_FSOID = 3343
 DEFAULT_DATABASE = 'postgres'
 DEFAULT_BACKUP_DIR_PREFIX = 'pt_rebuild_bk_'
 PGPORT=os.environ.get('PGPORT', '5432')

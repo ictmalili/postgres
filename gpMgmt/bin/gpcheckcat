@@ -2297,7 +2297,7 @@ def checkPersistentTables():
     FROM (SELECT * FROM gp_persistent_filespace_node
           WHERE persistent_state = 2) p
       FULL OUTER JOIN (SELECT oid, fsname FROM pg_filespace
-                       WHERE oid != 3052) f
+                       WHERE oid != 3343) f
         ON (p.filespace_oid = f.oid)
     WHERE  (p.filespace_oid is NULL OR f.oid is NULL)
     """
